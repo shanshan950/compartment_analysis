@@ -1,4 +1,4 @@
-# compartment_analysis
+# compartment_analysis testing
 Here is an example to show the 250kb resolution compartment analysis.
 You need fragment cis reads file <frag1> <frag2> <reads>
 hg19.genome_split_250k file format is <chr1> <start> <end> <bin1>
