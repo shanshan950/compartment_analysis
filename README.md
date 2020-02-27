@@ -31,14 +31,16 @@ cd $output/$bin
 
 # distance correction and calculate PCA
 $lib/3.generate.chr.matrix_component.r $output $bin
+
+# sumamrize peak counts for negative PC1 bins and positive PC1 bins and decide which symbol of PC represents opsenchromatin
 for chr in chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY;do
         $lib/compartment_calling.pl chip.file $chr.matrix.component > $chr.bin.$bin.chip.freq.score
 done
 # plot heatmaps with the first 3 PC values, you may need to check if PC1 is the best for explaining compartment for each chromosome
-$lib/5.plot.three.component.r `pwd` $bin
+$lib/5.plot.three.component.r `pwd` $bin $ref
 
 # if thre is any chromosome explained better by PC2, you need to change the default "1" to "2" for the chromosome in $lib/6.plot.one.component.r
-$lib/6.plot.one.component.r $output $bin `pwd`
+$lib/6.plot.one.component.r $output $bin `pwd` $ref
 
 # the output contains <bin> <compartmrnt A/B> <PC values>
 cat chr*bin.$bin.chip.freq.score.A.B.label | grep -v "chrX" | grep -v "chrY" > $output.$bin.merge.label
