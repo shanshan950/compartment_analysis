@@ -1,0 +1,7 @@
+path=/mnt/NFS/homeGene/JinLab/ssz20/zshanshan/heatmap_for_cis/
+outpath=/mnt/NFS/homeGene/JinLab/ssz20/zshanshan/heatmap_for_cis/normalize
+for cell in H1 H9 IMR90 GM12878;do 
+	for chr in chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY;do
+		$path/lib/compartment_calling.pl $path/$cell.chip.file $outpath/$cell/250k/$chr.matrix.component > $outpath/$cell/250k/$chr.bin.250k.chip.freq.score
+	done
+done
